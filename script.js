@@ -2,8 +2,8 @@ const serverPenCtx = document.getElementById('serverPenetrationChart').getContex
 const attackerDistCtx = document.getElementById('attackerDistributionChart').getContext('2d');
 let serverPenetrationGraph, attackerDistGraph;
 
-function createPenetrationData(numAttackers, lambda, totalTime, timeSteps) {
-    const dt = totalTime / timeSteps;  // Intervallo temporale infinitesimale
+function createPenetrationData(numAttackers, lambda, timeSteps) {
+    const dt = 1 / timeSteps;  // Intervallo temporale infinitesimale
     const attackResults = Array.from({ length: numAttackers }, () => [0]);
     const finalPenetrations = Array(numAttackers).fill(0);
     const savedScores = [];
@@ -34,8 +34,8 @@ function createPenetrationData(numAttackers, lambda, totalTime, timeSteps) {
     return { attackResults, penetrationDistribution, mean, variance, savedScores };
 }
 
-function drawPenetrationGraph(numAttackers, lambda, totalTime, timeSteps) {
-    const { attackResults, penetrationDistribution, mean, variance, savedScores } = createPenetrationData(numAttackers, lambda, totalTime, timeSteps);
+function drawPenetrationGraph(numAttackers, lambda, timeSteps) {
+    const { attackResults, penetrationDistribution, mean, variance, savedScores } = createPenetrationData(numAttackers, lambda, timeSteps);
     const labels = Array.from({ length: timeSteps }, (_, i) => `${i + 1}`);
     const attackerDatasets = attackResults.map((attackerData, idx) => ({
         label: `Attacker ${idx + 1}`,
@@ -139,9 +139,9 @@ function drawAttackerDistribution(penetrationDistribution, timeSteps, mean, vari
 document.getElementById('runSimulationBtn').addEventListener('click', function() {
     const numAttackers = parseInt(document.getElementById('hackerCount').value);
     const lambda = parseFloat(document.getElementById('attackRate').value);
-    const totalTime = parseInt(document.getElementById('totalTime').value);
     const timeSteps = parseInt(document.getElementById('timeSteps').value);
-    drawPenetrationGraph(numAttackers, lambda, totalTime, timeSteps);
+    drawPenetrationGraph(numAttackers, lambda, timeSteps);
 });
 
-drawPenetrationGraph(50, 0.5, 100, 1000);
+drawPenetrationGraph(50, 0.5, 1000);
+
