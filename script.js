@@ -143,5 +143,5 @@ document.getElementById('runSimulationBtn').addEventListener('click', function()
     drawPenetrationGraph(numAttackers, lambda, timeSteps);
 });
 
-drawPenetrationGraph(50, 0.5, 1000);
+drawPenetrationGraph(50, 50, 70);
 
