@@ -9,31 +9,70 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-    <div id="welfordExplanation">
-        <h2>Welford Recursion</h2>
+    <div id="research">
+        <h2>Research on Mean and Variance Behavior</h2>
         <p>
-            Welford recursion is an efficient numerical algorithm for calculating the mean and variance of a dataset, avoiding precision loss issues that can arise with conventional iterative calculations. This method is particularly useful when updating the mean and variance as new data points are added, without needing to store the entire dataset.
+            This section details the observed behavior of mean and variance over time for various cases: absolute/relative frequency and Bernoulli/random walk processes.
         </p>
-        <h3>Welford recursion for mean and variance:</h3>
-        <p>Let <em>x₁, x₂, ..., xₙ</em> be the data, with <em>μₙ</em> as the mean and <em>σₙ²</em> as the variance at step <em>n</em>.</p>
-        <h4>Initialization:</h4>
+
+        <!-- Translation of the Median Demonstration -->
+        <h2>Demonstration of the Median as the Minimum Sum of Absolute Deviations</h2>
+        <p>
+            Let \( X = \{x_1, x_2, ..., x_n\} \) be an ordered set of values, and we seek a value \( c \) that minimizes the sum of absolute deviations:
+        </p>
+        <p>
+            \[
+            S(c) = \sum_{i=1}^{n} |x_i - c|
+            \]
+        </p>
+        <p>
+            To prove that the median is the value of \( c \) that minimizes \( S(c) \), we can reason as follows:
+        </p>
         <ul>
-            <li>μ₀ = 0 (initial mean)</li>
-            <li>M₂ = 0 (a value we use to update variance, initially 0)</li>
-            <li>n = 0 (number of elements)</li>
+            <li>
+                <strong>Continuity</strong>: The absolute error function \( |x_i - c| \) is continuous and linear between the values \( x_1, x_2, ..., x_n \).
+            </li>
+            <li>
+                <strong>Derivative</strong>: To minimize \( S(c) \), we can study the derivative of the sum of absolute deviations with respect to \( c \). However, the derivative of the absolute value function does not exist at the exact points \( c = x_i \), but the slope of the function changes sign at the points where \( c \) crosses a value \( x_i \).
+            </li>
+            <li>
+                <strong>Median</strong>: The value of \( c \) that minimizes the sum of absolute deviations is found when there is a balance in the number of values above and below \( c \), and this is exactly what the median represents.
+            </li>
         </ul>
-        <h4>Update step (for each new value <em>x</em>):</h4>
+        <p>
+            Intuitively, the sum of absolute deviations is minimized when a value is chosen that "divides" the dataset into two equal parts in terms of the number of data points. This is exactly what the median does.
+        </p>
+
+        <h3>Other Ways to Define Central Tendency (Location Statistics)</h3>
+        <p>
+            Apart from the median, there are many ways to define a measure of position or central tendency for a distribution. Below are some common definitions, each with its generalization and motivation:
+        </p>
         <ul>
-            <li>Increment counter: <em>n ← n + 1</em></li>
-            <li>Update mean: <em>μₙ = μₙ₋₁ + (xₙ - μₙ₋₁) / n</em></li>
-            <li>Update M₂: <em>M₂ = M₂ + (xₙ - μₙ₋₁)(xₙ - μₙ)</em></li>
+            <li>
+                <strong>Arithmetic Mean</strong>: The mean is the sum of all values divided by the total number of observations. It is the most common measure of centrality and has useful mathematical properties, such as minimizing the sum of squared deviations:
+                \[
+                \text{Mean} = \frac{1}{n} \sum_{i=1}^{n} x_i
+                \]
+            </li>
+            <li>
+                <strong>Mode</strong>: The mode is the value that appears most frequently in a dataset. It is a useful measure when trying to identify the most "popular" value in a dataset.
+            </li>
+            <li>
+                <strong>Geometric Mean</strong>: This is used for distributions with growth rates or when the data are multiplicative, such as interest rates or economic growth:
+                \[
+                \text{Geometric Mean} = \left( \prod_{i=1}^{n} x_i \right)^{1/n}
+                \]
+            </li>
+            <li>
+                <strong>Harmonic Mean</strong>: The harmonic mean is useful in situations where the data represent ratios, such as speeds or rates:
+                \[
+                \text{Harmonic Mean} = \frac{n}{\sum_{i=1}^{n} \frac{1}{x_i}}
+                \]
+            </li>
         </ul>
-        <h4>Final variance calculation:</h4>
-        <p><em>σ² = M₂ / n</em></p>
     </div>
-
+    
     <h1>Penetration Simulation</h1>
-
     <form id="configForm">
         <div>
             <label for="hackerCount">Attackers (m):</label>
