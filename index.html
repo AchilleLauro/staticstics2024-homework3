@@ -104,33 +104,6 @@
         <p id="variance">Variance: N/A</p>
     </div>
 
-    <div id="research">
-        <h2>Research on Mean and Variance Behavior</h2>
-        <p>
-            This section details the observed behavior of mean and variance over time for various cases: absolute/relative frequency and Bernoulli/random walk processes.
-        </p>
-        <h3>1. Absolute Frequency and Bernoulli Process</h3>
-        <p>
-            - <strong>Mean</strong>: In a Bernoulli simulation (e.g., coin tosses), the mean represents the proportion of successes. Over time, this value converges towards the probability of success \(p\), stabilizing as more trials are performed.<br>
-            - <strong>Variance</strong>: Variance initially fluctuates, as early trials may vary significantly. However, it stabilizes as the number of trials increases and the results converge to the expected value \(p(1-p)\).
-        </p>
-        <h3>2. Relative Frequency and Bernoulli Process</h3>
-        <p>
-            - <strong>Mean</strong>: The mean in relative frequency converges faster to \(p\) due to normalization (successes relative to the number of trials). This is because proportions are more stable than absolute numbers.<br>
-            - <strong>Variance</strong>: Variance decreases more quickly compared to absolute frequency, as the ratio of successes tends to stabilize with an increasing number of trials, reducing fluctuations.
-        </p>
-        <h3>3. Absolute Frequency and Random Walk</h3>
-        <p>
-            - <strong>Mean</strong>: In a symmetric random walk (equal chance of moving forward or backward), the mean generally remains near zero since the positive and negative movements cancel each other out. Over time, however, there are periods of drift.<br>
-            - <strong>Variance</strong>: The variance grows linearly with time as the random walk progressively moves away from the starting point. This is because each step contributes to the distance traveled, causing the overall spread to increase.
-        </p>
-        <h3>4. Relative Frequency and Random Walk</h3>
-        <p>
-            - <strong>Mean</strong>: The mean in relative frequency remains near zero, but normalization compresses the values. As the total number of steps increases, the individual movements become proportionally smaller, leading to a more stable mean.<br>
-            - <strong>Variance</strong>: Variance in relative frequency grows more slowly. Since the values are normalized, the fluctuations are less pronounced, and the variance remains more stable than in the absolute frequency case.
-        </p>
-    </div>
-
     <script src="script.js"></script>
 </body>
 </html>
